@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">webClient</string>
+    <string name="webaddress">http://172.20.10.6:8081</string>
+    <string name="photedir">/storage/emulated/0/DCIM/Camera/</string>
+</resources>
