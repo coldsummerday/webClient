@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.zhouhaibin.webclient"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -28,4 +28,9 @@ dependencies {
     implementation 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.alibaba:fastjson:1.1.56.android'
     compile 'org.litepal.android:core:1.5.0'
+
+
+    compile project(':vitamio')
+
+
 }

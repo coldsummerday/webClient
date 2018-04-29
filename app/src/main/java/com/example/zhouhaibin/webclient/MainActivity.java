@@ -93,13 +93,24 @@ public class MainActivity extends AppCompatActivity  {
         downloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("main","start down");
+                String source_url = "http://192.168.199.244:8081/cloud/第十课.mkv";
+
+                Intent intent = new Intent(context,VideoActivity.class);
+                intent.putExtra("source_url",source_url);
+                startActivity(intent);
+              /*  Log.d("main","start down");
                 syncImageManager.getFromWeb(context);
+                */
             }
         });
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String source_url = "http://192.168.199.244:8081/cloud/第十课.mkv";
+                Intent intent = new Intent(context,VideoActivity.class);
+                intent.putExtra("source_url",source_url);
+                startActivity(intent);
+                /*
                 List<HashMap<String,String>> images = imageService.getImages();
                 List<Uri> urs = new ArrayList<>();
                 for (HashMap<String,String> data:images)
@@ -115,6 +126,7 @@ public class MainActivity extends AppCompatActivity  {
                 }
                 Log.d("main","start");
                 syncImageManager.postToWeb(urs);
+                */
             }
         });
 
