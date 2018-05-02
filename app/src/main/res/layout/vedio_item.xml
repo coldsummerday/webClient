@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/left_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+        <TextView
+            android:id="@+id/vedio_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:text="fdsfs"
+            android:layout_weight="2"/>
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:id="@+id/Vedio_download_Button"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="下载"
+            />
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:id="@+id/Vedio_play_Button"
+            android:text="播放"
+            android:layout_gravity="right"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</LinearLayout>

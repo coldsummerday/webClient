@@ -20,5 +20,8 @@ public class Setting {
         return "/storage/emulated/0/client/";
     }
     public static String webImagedir ="/images";
+    public static int RESPONSEOK =0x111;
+    public static int RESPONSEERROR = 0x222;
+    public static int STARTSENDREQUEST = 0x333;
 
 }

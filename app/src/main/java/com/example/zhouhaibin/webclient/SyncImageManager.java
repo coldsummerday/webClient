@@ -25,6 +25,7 @@ public class SyncImageManager {
 
     private ImageManager imageManager =null;
     private HttpClient httpClient = null;
+    private Handler downloadHandler = new Handler();
     public SyncImageManager(){
         this.imageManager = new ImageManager();
         this.httpClient = new HttpClient();
@@ -94,7 +95,8 @@ public class SyncImageManager {
             for(String key :webImages.keySet())
             {
                 if(!nowImageString.contains(key)){
-                    httpClient.downLoad("http://"+webImages.get(key),Setting.getClientPath());
+
+                    httpClient.downLoad("http://"+webImages.get(key),Setting.getClientPath(),downloadHandler);
                     Log.d("sync","down"+webImages.get(key));
                 }
             }

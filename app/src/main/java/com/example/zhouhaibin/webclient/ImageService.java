@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +24,7 @@ public class ImageService {
 
     public ImageService(Context context) {
         this.context = context;
-        prefix=context.getString(R.string.photedir);
+        prefix=Setting.getPicturePrefix();
     }
     public List<HashMap<String,String>> getImages(){
         Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
@@ -44,8 +46,6 @@ public class ImageService {
             while (cursor.moveToNext())
             {
                 imageMap = new HashMap<String, String>();
-
-
                 String imageUri =cursor.getString(cursor
                         .getColumnIndex(MediaStore.Images.Media.DATA));
                 if (imageUri.contains(this.prefix)){
@@ -57,4 +57,6 @@ public class ImageService {
         }
         return imageList;
     }
+
+
 }

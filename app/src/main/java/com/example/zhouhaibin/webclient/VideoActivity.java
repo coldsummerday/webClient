@@ -89,7 +89,8 @@ public class VideoActivity extends AppCompatActivity implements MediaPlayer.OnIn
         //获取播放url:
 
         Intent intent = getIntent();
-        source_url = intent.getStringExtra("sourse_url");
+        source_url = intent.getStringExtra("Source");
+
         if (Vitamio.isInitialized(this)) {
             initView();
             initData();
@@ -115,6 +116,7 @@ public class VideoActivity extends AppCompatActivity implements MediaPlayer.OnIn
 
     //初始化数据
     private void initData() {
+        Log.d("vedioActivity",source_url);
         uri = Uri.parse(source_url);
         mVideoView.setVideoURI(uri);//设置视频播放地址
         mVideoView.setMediaController(new MediaController(this));

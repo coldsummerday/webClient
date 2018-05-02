@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -34,8 +33,12 @@
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".VideoActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
+        <activity
+            android:name=".VideoActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.ImageActivity" />
+        <activity android:name=".activity.VedioSelectActivity" />
+        <activity android:name=".activity.PostFileActivity"></activity>
     </application>
 
 </manifest>
