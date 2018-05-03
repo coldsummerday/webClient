@@ -288,5 +288,6 @@ public class MainActivity extends AppCompatActivity  {
             new App("视频", R.drawable.play, com.example.zhouhaibin.webclient.activity.VedioSelectActivity.class),
             new App("照片同步", R.drawable.link, com.example.zhouhaibin.webclient.activity.ImageActivity.class),
             new App("上传文件", R.drawable.up, com.example.zhouhaibin.webclient.activity.PostFileActivity.class),
+            new App("下载文件",R.drawable.download,com.example.zhouhaibin.webclient.activity.downLoadFileActivity.class)
     };
 }

@@ -275,6 +275,7 @@ public class VedioSelectActivity extends AppCompatActivity {
             }
             String[] elements = Url.split("/");
             String vedionName = elements[elements.length-1];
+
             if(!this.flag) {
                 holder.videoNameTextView.setText(vedionName);
                 holder.downloadButton.setOnClickListener(new View.OnClickListener() {

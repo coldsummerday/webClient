@@ -6,16 +6,18 @@
     <LinearLayout
         android:id="@+id/left_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
+
         >
         <TextView
             android:id="@+id/vedio_name_textView"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:layout_margin="10dp"
-            android:textSize="20sp"
-            android:text="fdsfs"
+            android:textSize="15sp"
+            android:text="fjkdsfsdfgsdkfsdsdfsdfsdfsdf"
+
             android:layout_weight="2"/>
         <Button
             android:layout_width="20dp"

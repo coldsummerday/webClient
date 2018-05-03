@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.zhouhaibin.webclient.activity.VedioSelectActivity">
+    tools:context="com.example.zhouhaibin.webclient.activity.downLoadFileActivity">
 
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/vedio_Listview"
-        android:layout_centerHorizontal="true"
-        ></ListView>
-
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/download_listView">
+        </ListView>
 </android.support.constraint.ConstraintLayout>

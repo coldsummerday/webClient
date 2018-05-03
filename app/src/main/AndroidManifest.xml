@@ -38,7 +38,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.ImageActivity" />
         <activity android:name=".activity.VedioSelectActivity" />
-        <activity android:name=".activity.PostFileActivity"></activity>
+        <activity android:name=".activity.PostFileActivity" />
+        <activity android:name=".activity.downLoadFileActivity"></activity>
     </application>
 
 </manifest>
