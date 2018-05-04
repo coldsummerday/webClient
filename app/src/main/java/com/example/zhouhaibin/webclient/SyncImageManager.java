@@ -1,5 +1,6 @@
 package com.example.zhouhaibin.webclient;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.daimajia.numberprogressbar.NumberProgressBar;
 
 import org.apache.http.conn.scheme.HostNameResolver;
 import org.litepal.crud.DataSupport;
@@ -26,45 +28,60 @@ public class SyncImageManager {
     private ImageManager imageManager =null;
     private HttpClient httpClient = null;
     private Handler downloadHandler = new Handler();
+     Handler reTryHandler =null;
     public SyncImageManager(){
         this.imageManager = new ImageManager();
         this.httpClient = new HttpClient();
+         reTryHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if(msg.what==0x123){
+                    httpClient.post(Uri.parse(msg.obj.toString()),"image",Thread.currentThread());
+                }
+            }
+        };
     }
 
-    public void postToWeb(List<Uri> localImages)  {
+    public void postToWeb(List<Uri> localImages,Activity activity,final Handler barHandler)  {
         List<Images> dbImages = imageManager.getDbImages();
         List<String> dbImagesString = new ArrayList<>();
         for(Images image :dbImages){
             dbImagesString.add(image.getName());
         }
-        Log.d("db","find"+String.valueOf(dbImages.size())+"images");
-        final Handler reTryHandler = new Handler(){
-          @Override
-          public void handleMessage(Message msg) {
-              if(msg.what==0x123){
-                  httpClient.post(Uri.parse(msg.obj.toString()),"image",Thread.currentThread());
-              }
-          }
-        };
+
+        double index = 0.0;
+        int count = localImages.size();
+        double progress = 0.00;
+
         for(Uri uri:localImages){
             if (dbImagesString.contains(uri.getPath())){
-                Log.d("db","find the exits images");
                continue;
             }
             try{
                 Thread.currentThread().sleep(300);
             }catch (InterruptedException e)
             {
-                Log.d("thread","error");
+
             }
             httpClient.post(uri,"image",Thread.currentThread(),reTryHandler);
-            Log.d("sync","post one Image");
-            Images image = new Images(uri.getPath());
+            index++;
 
+            if((index/count)>(progress+0.01)){
+                progress+=0.01;
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        Log.d("send","1%");
+                    }
+                });
+
+            }
         }
     }
 
-    public void getFromWeb(Context context){
+    public void getFromWeb(Context context, final Activity activity,final Handler barHandler){
+
         final HashMap<String,String> webImages = new HashMap<>();
         final ImageService imageService = new ImageService(context);
         final List<String> nowImageString = new ArrayList<>();
@@ -92,17 +109,28 @@ public class SyncImageManager {
                 String localUri = data.get("data");
                 nowImageString.add(localUri);
             }
+               double index = 0.0;
+               int count = webImages.size();
+               double progress = 0.00;
+
             for(String key :webImages.keySet())
             {
                 if(!nowImageString.contains(key)){
 
                     httpClient.downLoad("http://"+webImages.get(key),Setting.getClientPath(),downloadHandler);
-                    Log.d("sync","down"+webImages.get(key));
+                }
+                if((index/count)>(progress+0.01)){
+                    progress+=0.01;
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.d("send","1%");
+                        }
+                    });
                 }
             }
            }
        };
-
        httpClient.Get(Setting.getWebAddress()+"/search?context="+android.os.Build.MODEL+"&&type=jpg",handler);
     }
 }

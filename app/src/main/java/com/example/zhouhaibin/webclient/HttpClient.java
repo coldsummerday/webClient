@@ -80,15 +80,14 @@ public class HttpClient {
 
         call.enqueue(new Callback() {
 
-            Message msg =  new Message();
+
             @Override
             public void onFailure(Request request, IOException e)
             {
 
+                Message msg = handler.obtainMessage();
                 msg.what=Setting.RESPONSEERROR;
-
                 handler.sendMessage(msg);
-                Log.d("okhttp,","error");
             }
 
             @Override
@@ -122,6 +121,7 @@ public class HttpClient {
                     {
                     }
                 }
+                Message msg = handler.obtainMessage();
                 msg.what=Setting.RESPONSEOK;
                 handler.sendMessage(msg);
             }
@@ -155,9 +155,9 @@ public class HttpClient {
                     currentThread.sleep(2000);
                 }catch (InterruptedException es){
                 }
-                Message msg = new Message();
+                Message msg = handler.obtainMessage();
                 msg.obj=uri;
-                msg.what=0x123;
+                msg.what=Setting.RESPONSEERROR;
                 handler.sendMessage(msg);
             }
 
@@ -167,9 +167,8 @@ public class HttpClient {
                     Images images = new Images(uri.getPath());
                     images.save();
                 }
-                Message msg = new Message();
-                msg.obj=uri;
-                msg.what=0x456;
+                Message msg =handler.obtainMessage();
+                msg.what=Setting.RESPONSEOK;
                 handler.sendMessage(msg);
             }
         });

@@ -136,6 +136,7 @@ public class VedioSelectActivity extends AppCompatActivity {
     private void LoadTvVideo(){
         vedioNameList.clear();
         listView.setAdapter(tvVideoListAdapter);
+        /*
         final Handler syncHandler = new Handler(){
             public void handleMessage(Message msg) {
                 if (msg.what == Setting.RESPONSEOK) {
@@ -156,6 +157,8 @@ public class VedioSelectActivity extends AppCompatActivity {
             }
         };
         httpClient.Get(Setting.getWebAddress()+"/cloud/file/tv.json",syncHandler);
+        */
+        LoadLocalJson();
 
     }
     private void LoadOnlineVedio(){

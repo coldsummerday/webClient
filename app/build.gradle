@@ -26,6 +26,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'com.daimajia.numberprogressbar:library:1.4@aar'
     compile 'com.alibaba:fastjson:1.1.56.android'
     compile 'org.litepal.android:core:1.5.0'
 
